@@ -58,9 +58,14 @@ Browser APIs:
 
 • Teacher can clear session records anytime
 
-• Students can scan QR using camera or enter code manually
+• Students can scan QR using camera 
+
 • Students get location verification before marking attendance
+
 • Students can view their attendance history (date, class, time, status)
+
 • Fully browser-based — no backend required
+
 • Works on mobile and desktop (responsive UI)
+
 • Fast, secure, and prevents proxy attendance
