@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Innovation Loop - Smart QR Attendance System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+
+</head>
+
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-card neon-border fade-in">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 rounded-full neon-border mx-auto mb-4 flex items-center justify-center">
+                    <i class="fas fa-infinity text-2xl neon-text"></i>
+                </div>
+                <h1 class="text-3xl font-bold neon-text mb-2">The Innovation Loop</h1>
+                <p class="text-gray-400">Smart QR Attendance System with Location Tracking</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="role-selector">
+                    <button type="button" class="role-btn active" data-role="teacher">
+                        <i class="fas fa-chalkboard-teacher mr-2"></i>Teacher
+                    </button>
+                    <button type="button" class="role-btn" data-role="student">
+                        <i class="fas fa-graduation-cap mr-2"></i>Student
+                    </button>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">
+                        <i class="fas fa-user mr-2"></i>Name
+                    </label>
+                    <input type="text" id="userName" class="input-field" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">
+                        <i class="fas fa-id-badge mr-2"></i>ID
+                    </label>
+                    <input type="text" id="userId" class="input-field" placeholder="Enter your ID" required>
+                </div>
+                
+                <button type="submit" class="glow-button w-full py-3 rounded-full font-semibold">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center text-sm text-gray-500">
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Dashboard -->
+    <div id="teacherDashboard" class="dashboard-container">
+        <nav class="navbar px-6 py-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full neon-border flex items-center justify-center">
+                        <i class="fas fa-infinity neon-text"></i>
+                    </div>
+                    <h1 class="text-xl font-bold neon-text">The Innovation Loop</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-300">
+                        <i class="fas fa-chalkboard-teacher mr-2"></i>
+                        <span id="teacherName">Teacher</span>
+                    </span>
+                    <button onclick="logout()" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mx-auto px-6 pt-24 pb-12">
+            <h2 class="text-4xl font-bold text-center mb-8 neon-text-blue">Teacher Dashboard</h2>
+            
+            <!-- Stats Cards -->
+            <div class="grid md:grid-cols-4 gap-4 mb-8">
+                <div class="stats-card">
+                    <i class="fas fa-users text-3xl text-blue-500 mb-2"></i>
+                    <h3 class="text-2xl font-bold" id="totalStudents">0</h3>
+                    <p class="text-gray-400">Total Present</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-clock text-3xl text-green-500 mb-2"></i>
+                    <h3 class="text-2xl font-bold" id="sessionTime">00:00</h3>
+                    <p class="text-gray-400">Session Time</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-qrcode text-3xl text-purple-500 mb-2"></i>
+                    <h3 class="text-2xl font-bold" id="qrGenerated">0</h3>
+                    <p class="text-gray-400">QR Generated</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-map-marker-alt text-3xl text-orange-500 mb-2"></i>
+                    <h3 class="text-2xl font-bold" id="locationVerified">0</h3>
+                    <p class="text-gray-400">Location Verified</p>
+                </div>
+            </div>
+            <!-- QUIZ Button -->
+<div class="text-center mb-8">
+    <button id="createQuizBtn" 
+        class="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full font-semibold text-white shadow-lg transition">
+        <i class="fas fa-book mr-2"></i>Create Quiz / Assignment
+    </button>
+</div>
+
+
+            <!-- QR Generation Section -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="feature-card">
+                    <h3 class="text-2xl font-semibold mb-6 text-center neon-text-blue">Generate QR Code</h3>
+                    <div class="text-center">
+                        <div id="qrCodeContainer" class="mb-6 flex justify-center">
+                            <div id="qrcode" class="qr-display"></div>
+                        </div>
+                        <div id="qrTimer" class="timer mb-4">QR expires in: --</div>
+                        <button id="generateQRBtn" class="glow-button px-6 py-3 rounded-full font-semibold">
+                            <i class="fas fa-sync-alt mr-2"></i>Generate New QR
+                        </button>
+                        <button id="startSessionBtn" class="ml-2 glow-button-purple px-6 py-3 rounded-full font-semibold">
+                            <i class="fas fa-play mr-2"></i>Start Session
+                        </button>
+                        <p class="mt-4 text-sm text-gray-400">QR codes auto-refresh every 60 seconds during session</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <h3 class="text-2xl font-semibold mb-6 text-center neon-text">Session Controls</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Class Name</label>
+                            <input type="text" id="className" class="input-field" placeholder="Enter class name" value="Computer Science 101">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Expected Students</label>
+                            <input type="number" id="expectedStudents" class="input-field" placeholder="Number of students" value="100">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Class Location</label>
+                            <div class="flex items-center space-x-2">
+                                <input type="text" id="classLocation" class="input-field flex-1" placeholder="Room number or building" value="Room 301, Main Building">
+                                <button id="setLocationBtn" class="glow-button-orange px-4 py-2 rounded-lg">
+                                    <i class="fas fa-map-pin"></i>
+                                </button>
+                            </div>
+                            <div id="teacherLocation" class="mt-2 text-sm text-gray-400">
+                                <i class="fas fa-location-arrow mr-1"></i>
+                                Location not set
+                            </div>
+                        </div>
+                        <button id="endSessionBtn" class="w-full bg-red-600 hover:bg-red-700 px-6 py-3 rounded-full font-semibold transition-colors">
+                            <i class="fas fa-stop mr-2"></i>End Session
+                        </button>
+                        <button id="exportBtn" class="w-full bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full font-semibold transition-colors">
+                            <i class="fas fa-download mr-2"></i>Export Attendance
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Attendance Log -->
+            <div class="feature-card">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-semibold neon-text-blue">Live Attendance Log</h3>
+                    <button id="clearAttendanceBtn" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                        Clear All
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Student Name</th>
+                                <th>Student ID</th>
+                                <th>Time</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceList">
+                            <!-- Attendance records will be added here -->
+                        </tbody>
+                    </table>
+                    <div id="noRecords" class="text-center py-8 text-gray-500">
+                        No attendance records yet. Start a session and generate QR codes!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Dashboard -->
+    <div id="studentDashboard" class="dashboard-container">
+        <nav class="navbar px-6 py-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full neon-border-purple flex items-center justify-center">
+                        <i class="fas fa-infinity neon-text-purple"></i>
+                    </div>
+                    <h1 class="text-xl font-bold neon-text-purple">The Innovation Loop</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-300">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span id="studentName">Student</span>
+                    </span>
+                    <div id="locationStatus" class="location-badge pending">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span id="locationText">Location Unknown</span>
+                    </div>
+                    <button onclick="logout()" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mx-auto px-6 pt-24 pb-12">
+            <h2 class="text-4xl font-bold text-center mb-8 neon-text">Student Dashboard</h2>
+            <!-- Student Quiz Section -->
+<div id="studentQuizSection" class="hidden mt-10">
+    <h3 class="text-3xl font-bold neon-text-blue mb-6 text-center">Available Quizzes</h3>
+
+    <div id="availableQuizzesList" class="grid md:grid-cols-2 gap-6"></div>
+</div>
+
+<!-- Student Quiz Attempt Popup -->
+<div id="studentQuizPopup" class="popup hidden">
+    <div class="popup-content p-6 rounded-xl bg-gray-900 neon-border-purple max-w-xl mx-auto">
+        <h3 class="text-2xl font-bold mb-4 neon-text-purple text-center" id="studentQuizTitle"></h3>
+        
+        <div id="studentQuizQuestions" class="space-y-4"></div>
+
+        <button onclick="submituizAnswers()" class="w-full mt-4 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg">
+            Submit Quiz
+        </button>
+
+        <button onclick="closeStudentQuizPopup()" class="w-full mt-3 bg-gray-700 hover:bg-gray-800 px-4 py-2 rounded-lg">
+            Close
+        </button>
+    </div>
+</div>
+
+            
+            <!-- Student Info Card -->
+            <div class="feature-card mb-8 text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full neon-border-purple mb-4">
+                    <i class="fas fa-user-graduate text-3xl neon-text-purple"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2" id="studentDisplayName">Student Name</h3>
+                <p class="text-gray-400" id="studentDisplayId">Student ID</p>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-green-500" id="attendanceStatus">Not Marked</p>
+                        <p class="text-sm text-gray-400">Today's Status</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Status -->
+            <div class="feature-card mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-center neon-text-orange">Location Verification</h3>
+                <div class="text-center">
+                    <div id="locationInfo" class="mb-4">
+                        <i class="fas fa-map-marker-alt text-4xl text-orange-500 mb-2"></i>
+                        <p class="text-lg" id="locationMessage">Checking location...</p>
+                        <p class="text-sm text-gray-400 mt-2" id="locationCoords"></p>
+                    </div>
+                    <button id="checkLocationBtn" class="glow-button-orange px-6 py-3 rounded-full font-semibold">
+                        <i class="fas fa-location-arrow mr-2"></i>Check Location
+                    </button>
+                    <p class="mt-4 text-sm text-gray-400">Location access is required for attendance verification</p>
+                </div>
+            </div>
+
+            <!-- QR Scanner Section -->
+            <div class="feature-card mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-center neon-text-blue">Scan QR Code</h3>
+                <div class="text-center">
+                    <div class="camera-container mb-6">
+                       <div id="videoElement" style="width: 300px; height: 300px;"></div>
+
+                        <div class="scan-overlay"></div>
+                    </div>
+                    <button id="startScanBtn" class="glow-button px-6 py-3 rounded-full font-semibold">
+                        <i class="fas fa-camera mr-2"></i>Start Camera Scanner
+                    </button>
+                    <button id="stopScanBtn" class="ml-2 bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-full font-semibold transition-colors hidden">
+                        <i class="fas fa-stop mr-2"></i>Stop Scanner
+                    </button>
+                    <p class="mt-4 text-sm text-gray-400">Point your camera at the QR code displayed by your teacher</p>
+                </div>
+            </div>
+
+            <!-- Manual Entry (Fallback) -->
+            <div class="feature-card mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-center neon-text-purple">Manual QR Entry</h3>
+                <div class="text-center">
+                    <input type="text" id="manualQRInput" class="input-field mb-4" placeholder="Enter QR code (if camera not working)">
+                    <button id="manualSubmitBtn" class="glow-button-purple px-6 py-3 rounded-full font-semibold">
+                        <i class="fas fa-keyboard mr-2"></i>Submit Manually
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Attendance -->
+            <div class="feature-card">
+                <h3 class="text-2xl font-semibold mb-6 text-center neon-text-purple">Your Attendance History</h3>
+                <div class="overflow-x-auto">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Class</th>
+                                <th>Time In</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentHistory">
+                            <!-- Student history will be added here -->
+                        </tbody>
+                    </table>
+                    <div id="noHistory" class="text-center py-8 text-gray-500">
+                        No attendance history yet. Enable location and scan a QR code to mark your attendance!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="flex items-center">
+            <i id="notificationIcon" class="fas fa-check-circle mr-3"></i>
+            <span id="notificationText"></span>
+        </div>
+    </div>
+    <!-- Quiz Creation Modal -->
+<div id="quizModal" class="fixed inset-0 hidden bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="bg-gray-900 p-6 rounded-xl w-full max-w-md border border-purple-500">
+        <h2 class="text-2xl font-bold mb-4 text-purple-400">Create Quiz</h2>
+
+        <label class="block mb-2 text-gray-300">Quiz Title</label>
+        <input id="quizTitle" type="text" class="input-field mb-4" placeholder="Enter title">
+
+        <label class="block mb-2 text-gray-300">Question</label>
+        <textarea id="quizQuestion" class="input-field mb-4" placeholder="Write the question"></textarea>
+
+        <label class="block mb-2 text-gray-300">Correct Answer</label>
+        <input id="quizAnswer" type="text" class="input-field mb-4" placeholder="Correct answer">
+
+        <button id="saveQuizBtn" class="w-full bg-green-600 hover:bg-green-700 py-2 rounded-lg font-semibold mb-3">
+            Save Quiz
+        </button>
+        <button id="closeQuizBtn" class="w-full bg-red-600 hover:bg-red-700 py-2 rounded-lg font-semibold">
+            Close
+        </button>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+</body>
+</html>
