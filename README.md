@@ -11,6 +11,7 @@ _Explore and redefine the future of education through original, scalable and imp
 _Goal: Push the boundaries of learning by pioneering ideas that make education more adaptive, inclusive, and future-ready_
 
 **Description:**
+
 _An innovative web application that ensures instant, secure attendance by eliminating proxies, error and delays.
 The teacher/ faculty starts a session and projects a QR which is scanned by the students to mark their attendance. It includes geolocation fencing so that only those students
 who are inside the classroom are marked present, hence, no proxy attendance!_
