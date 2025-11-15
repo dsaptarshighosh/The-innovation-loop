@@ -69,3 +69,51 @@ Browser APIs:
 • Works on mobile and desktop (responsive UI)
 
 • Fast, secure, and prevents proxy attendance
+
+**HOW TO USE?**
+
+_FOR TEACHERS_
+
+Open the website in your browser.
+
+Select Teacher Login.
+
+Enter your details and log in.
+
+Click Start Session to begin attendance.
+
+Set the class name, expected number of students, and (optional) class location.
+
+A unique QR code will be generated and displayed on the screen.
+
+Project or show the QR code to the students.
+
+Monitor real-time attendance logs as students scan.
+
+Click End Session when the class is over.
+
+Export attendance data if needed (CSV/Excel).
+
+You can also clear the session records anytime.
+
+_FOR STUDENTS_
+
+Open the website on your phone.
+
+Select Student Login.
+
+Allow camera and location access when the browser asks.
+
+Click Scan QR.
+
+Point your camera at the QR code displayed by the teacher.
+
+If scanning fails, use the Manual Code Entry option.
+
+Your location will be checked using geofencing.
+
+If you are inside the classroom boundary, attendance will be marked Present.
+
+If outside, you will see an error message.
+
+You can view your attendance history anytime from the student dashboard.
