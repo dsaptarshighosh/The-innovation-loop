@@ -21,9 +21,11 @@ Frontend
 1) HTML5 
 2) CSS 
 3) JavaScript
+   
 UI: 
 1) Tailwind CSS 
 2) Google Fonts
+   
 QR Code: 
 qrcode.js
 QR Scanner: 
