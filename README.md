@@ -43,14 +43,21 @@ Browser APIs:
 ***FEATURES***
 
 • Separate dashboards for Teacher and Student
+
 • QR-based attendance system with auto-generated QR codes
+
 • QR codes expire/refresh after a set time for security
+
 • Geolocation fencing ensures only students inside the classroom can mark attendance
+
 • Teacher can start and end attendance sessions
+
 • Teacher can set class name, expected students, and class location
+
 • Real-time attendance log showing student name, time, and location status
-• Teacher can export attendance data (CSV/Excel)
+
 • Teacher can clear session records anytime
+
 • Students can scan QR using camera or enter code manually
 • Students get location verification before marking attendance
 • Students can view their attendance history (date, class, time, status)
