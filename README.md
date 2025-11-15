@@ -43,33 +43,8 @@ Browser APIs:
 
 ***FEATURES***
 
-• Separate dashboards for Teacher and Student
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/47342816-94fd-42e1-802e-26a892d8056c" />
 
-• QR-based attendance system with auto-generated QR codes
-
-• QR codes expire/refresh after a set time for security
-
-• Geolocation fencing ensures only students inside the classroom can mark attendance
-
-• Teacher can start and end attendance sessions
-
-• Teacher can set class name, expected students, and class location
-
-• Real-time attendance log showing student name, time, and location status
-
-• Teacher can clear session records anytime
-
-• Students can scan QR using camera 
-
-• Students get location verification before marking attendance
-
-• Students can view their attendance history (date, class, time, status)
-
-• Fully browser-based — no backend required
-
-• Works on mobile and desktop (responsive UI)
-
-• Fast, secure, and prevents proxy attendance
 
 **HOW TO USE?**
 
