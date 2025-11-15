@@ -1,6 +1,6 @@
-***WITH GEOLOCATION FENCING***
+***QR BASED ATTENDANCE SYSTEM  WITH GEOLOCATION FENCING***
 
-<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/d99ca1f5-501e-4cd5-8326-8072bc812933" />***QR BASED ATTENDANCE SYSTEM 
+<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/d99ca1f5-501e-4cd5-8326-8072bc812933" />
 
 
 <img width="1901" height="1013" alt="image" src="https://github.com/user-attachments/assets/13bb9d3b-52c9-47be-ab37-672ff1be845f" /><img width="1286" height="886" alt="image" src="https://github.com/user-attachments/assets/39d4d843-8239-484c-9c6a-ed3931c9c836" />
