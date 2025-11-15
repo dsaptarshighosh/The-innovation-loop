@@ -17,7 +17,7 @@ who are inside the classroom are marked present, hence, no proxy attendance!_
 
 ***Tech Stack***
  
-Frontend 
+Frontend :
 1) HTML5 
 2) CSS 
 3) JavaScript
@@ -28,8 +28,10 @@ UI:
    
 QR Code: 
 qrcode.js
+
 QR Scanner: 
 html5-qrcode
+
 Browser APIs: 
 1) LocalStorge 
 2) Geolocation 
